@@ -1,3 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+body {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.75;
+    color: #0C1825;
+    text-align: left;
+    background-color: #fff;
+}
+.form_page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .form_box {
+        max-width: 30em;
+        width:100%;
+    }
+    .input_label {
+        font-size: 1em;
+        font-weight: 500;
+
+    }
+    .form_input {
+        display: block;
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+        min-height: 32px;
+        margin-bottom: 1em;
+        line-height: normal;
+        font-weight: 400;
+        color: #0C1825;
+        outline: none;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #d8d8d8;
+        border-radius: 4px;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+    .swipe {
+        transition: .5s ease-in-out;
+        padding-right: 2em;
+    }
+    .button_box:hover {
+        .swipe {
+            padding-right: 0;
+        }
+    }
+}
