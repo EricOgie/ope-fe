@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="card_box flex flex-col sm:grid grid-cols-2 gap-4">
+        <div class="card_box flex flex-col my-4 sm:grid grid-cols-2 gap-4">
             <div class="portfolio_card relative p-2 flex justify-center items-center">
                 <p class="title absolute top-0 m-2 mx-4 left-0">
                     Your Portfolio Value:
@@ -22,10 +22,22 @@
                 </div>
             </div>
         </div>
+        <div class="stocks_list">
+            <p class="p-2 font-bold">Portfolio Activities:</p>
+            <StockCard v-for="i in 4" :key="i"/>
+        </div>
     </div>
 </template>
 <script>
+import StockCard from '@/components/StockCard.vue'
+
 export default {
-    name: 'Overview'
+    name: 'Overview',
+    components: {
+        StockCard
+    }
 }
 </script>
+<style lang="scss">
+
+</style>

@@ -64,7 +64,9 @@ body {
         }
     }
 }
-
+.ibm {
+    font-family: 'IBM Plex Mono', monospace;
+}
 .portfolio_card {
     background-image: url('/img/portfolio_card.svg');
     background-size: cover;
@@ -75,7 +77,7 @@ body {
     min-height: 200px;
     border-radius: 10px;
     color: white;
-    
+
     .value {
         font-family: 'IBM Plex Mono', monospace;
     }
