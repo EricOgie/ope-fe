@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@300;600;700&display=swap');
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
@@ -63,4 +63,34 @@ body {
             padding-right: 0;
         }
     }
+}
+
+.portfolio_card {
+    background-image: url('/img/portfolio_card.svg');
+    background-size: cover;
+    background-position: top; 
+    max-width: 450px;
+    width: 100%;
+    margin: .5em auto;
+    min-height: 200px;
+    border-radius: 10px;
+    color: white;
+    
+    .value {
+        font-family: 'IBM Plex Mono', monospace;
+    }
+}
+.link_box {
+    min-height: 200px;
+    margin: .5em auto;
+}
+.page_container {
+    max-width: 95%;
+    margin: 1em auto;
+    margin-top:3em;
+}
+@media (min-width:649px) {
+.page_container {
+    max-width: 80%;
+}
 }
