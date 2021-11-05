@@ -1,16 +1,16 @@
 <template>
     <div>
-                <div class="flex w-full mb-2 flex-col items-start sm:flex-row justify-between sm:items-center border rounded p-2 px-4">
-                    <div class="stock_name_container my-2 flex-grow flex items-center">
+                <div :style='{"--order": index }' id="stockcard" class="flex w-full mb-4 flex-col items-start sm:flex-row justify-between sm:items-center border rounded p-2 px-4">
+                    <div class="stock_name_container  my-2 flex-grow flex items-center">
                         <div class="border p-2 w-12 rounded-3xl">
                             <img src="@/assets/img/Face.png" class="w-full"/>
                         </div>
                         <div class="mx-4 flex-grow">
                             <p class="stock_abbr font-bold">AWMN</p>
-                            <p class="stock_fullname text-grey-400">Awenemen</p>
+                            <p class="stock_fullname text-gray-500">Awenemen</p>
                         </div>
                     </div>
-                    <div class="stock_details w-full my-2 grid grid-cols-3 gap-10">
+                    <div class="stock_details border-t sm:border-0 py-2 w-full my-2 grid grid-cols-3 gap-10">
                         <div class="text-center">
                             <p class="font-medium text-gray-500 text-xs">Total Equity</p>
                             <p>20</p>
@@ -29,6 +29,28 @@
 </template>
 <script>
 export default {
-    name: 'StockCard'
+    name: 'StockCard',
+    props:['index']
 }
 </script>
+<style lang="scss" scoped>
+#stockcard {
+    box-shadow: 0px 0px 10px rgba(12, 24, 37, 0.05);
+    opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: .35s;
+    animation-delay: calc(var(--order) * 200ms)
+}
+@keyframes fadeInOpacity {
+    20% {
+		opacity: 0;
+        transform: translateX(20%)
+	}
+	30%, 100% {
+		opactity: 1;
+        transform: translateX(0)
+	}
+}
+</style>
