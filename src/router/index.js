@@ -3,7 +3,9 @@ import Home from '../views/Home.vue';
 import Login from '../views/SignIn.vue'
 import CreateAccount from '@/views/CreateAccount.vue'
 import Overview from '@/views/Overview.vue'
+import Loan from '@/views/Loan.vue'
 import Dashboard from '@/layouts/Index.vue'
+
 
 const routes = [
   {
@@ -25,6 +27,10 @@ const routes = [
         path: '',
         name: 'Overview',
         component: Overview,
+      }, {
+        path: '/loan',
+        name: 'Loan',
+        component: Loan,
       }
     ]
   },

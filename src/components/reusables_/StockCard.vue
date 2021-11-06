@@ -36,7 +36,7 @@ export default {
 <style lang="scss" scoped>
 #stockcard {
     box-shadow: 0px 0px 10px rgba(12, 24, 37, 0.05);
-    opacity: 1;
+    
 	animation-name: fadeInOpacity;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
@@ -46,11 +46,11 @@ export default {
 @keyframes fadeInOpacity {
     20% {
 		opacity: 0;
-        transform: translateX(20%)
+        transform: translateY(-40%)
 	}
-	30%, 100% {
-		opactity: 1;
-        transform: translateX(0)
+	100% {
+		opacity: 1;
+        transform: translateY(0)
 	}
 }
 </style>
