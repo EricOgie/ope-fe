@@ -1,7 +1,9 @@
-import { createApp } from 'vue';
-import App from './App.vue';
-import './registerServiceWorker';
-import router from './router';
-import store from './store';
+import { createApp } from "vue";
+import VueClickAway from "vue3-click-away";
+import formatCurrency from "./mixins/formatCurrency";
+import App from "./App.vue";
+import "./registerServiceWorker";
+import router from "./router";
+import store from "./store";
 
-createApp(App).use(store).use(router).mount('#app');
+createApp(App).mixin(formatCurrency).use(VueClickAway).use(store).use(router).mount("#app");

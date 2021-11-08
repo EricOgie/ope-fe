@@ -1,98 +1,97 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@300;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@300;600;700&display=swap");
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
 body {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.75;
-    font-family: 'DM Sans', sans-serif;
-    color: #0C1825;
-    text-align: left;
-    background-color: #fff;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.75;
+  font-family: "DM Sans", sans-serif;
+  color: #0c1825;
+  text-align: left;
+  background-color: #fff;
 }
 .form_page {
-    min-height: 100vh;
-    display: flex;
-    padding:0 1em;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    .form_box {
-        max-width: 30em;
-        width:100%;
-    }
-    .input_label {
-        font-size: 1em;
-        font-weight: 500;
+  min-height: 100vh;
+  display: flex;
+  padding: 0 1em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .form_box {
+    max-width: 30em;
+    width: 100%;
+  }
+  .input_label {
+    font-size: 1em;
+    font-weight: 500;
+  }
+  .input_box {
+    margin-bottom: 1em;
+  }
+  .form_input {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+    min-height: 32px;
 
-    }
-    .input_box {
-        margin-bottom: 1em;
-    }
-    .form_input {
-        display: block;
-        width: 100%;
-        height: auto;
-        padding: 1rem;
-        min-height: 32px;
-        
-        line-height: normal;
-        font-weight: 400;
-        color: #0C1825;
-        outline: none;
-        background-color: #fff;
-        background-clip: padding-box;
-        border: 1px solid #d8d8d8;
-        border-radius: 4px;
-        box-shadow: #eb4a27;
-        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    }
-    .form_input.invalid_input:hover {
-        border-color: #eb4a27;
-        box-shadow: 0 0 0 rgb(255, 182, 182);
-    }
+    line-height: normal;
+    font-weight: 400;
+    color: #0c1825;
+    outline: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #d8d8d8;
+    border-radius: 4px;
+    box-shadow: #eb4a27;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  .form_input.invalid_input:hover {
+    border-color: #eb4a27;
+    box-shadow: 0 0 0 rgb(255, 182, 182);
+  }
+  .swipe {
+    transition: 0.5s ease-in-out;
+    padding-right: 2em;
+  }
+  .button_box:hover {
     .swipe {
-        transition: .5s ease-in-out;
-        padding-right: 2em;
+      padding-right: 0;
     }
-    .button_box:hover {
-        .swipe {
-            padding-right: 0;
-        }
-    }
+  }
 }
 .ibm {
-    font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
 }
 .portfolio_card {
-    background-image: url('/img/portfolio_card.svg');
-    background-size: cover;
-    background-position: top; 
-    max-width: 450px;
-    width: 100%;
-    margin: .5em auto;
-    min-height: 200px;
-    border-radius: 10px;
-    color: white;
+  background-image: url("/img/portfolio_card.svg");
+  background-size: cover;
+  background-position: top;
+  max-width: 450px;
+  width: 100%;
+  margin: 0.5em auto;
+  min-height: 200px;
+  border-radius: 10px;
+  color: white;
 
-    .value {
-        font-family: 'IBM Plex Mono', monospace;
-    }
+  .value {
+    font-family: "IBM Plex Mono", monospace;
+  }
 }
 .link_box {
-    min-height: 200px;
-    margin: .5em auto;
+  min-height: 200px;
+  margin: 0.5em auto;
 }
 .page_container {
-    max-width: 95%;
-    margin: 1em auto;
-    margin-top:3em;
+  max-width: 95%;
+  margin: 1em auto;
+  margin-top: 3em;
 }
-@media (min-width:649px) {
-.page_container {
+@media (min-width: 649px) {
+  .page_container {
     max-width: 80%;
-}
+  }
 }

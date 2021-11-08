@@ -7,7 +7,8 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "prepare": "husky install",
-    "deploy": "sh deploy.sh"
+    "deploy": "sh deploy.sh",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@vuelidate/core": "^2.0.0-alpha.32",
@@ -19,6 +20,7 @@
     "sass-loader": "10",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
+    "vue3-click-away": "^1.2.1",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {
@@ -39,6 +41,7 @@
     "husky": "^7.0.4",
     "lint-staged": "^11.2.4",
     "postcss": "7",
+    "prettier": "2.4.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   },
   "eslintConfig": {
@@ -63,7 +66,8 @@
   },
   "lint-staged": {
     "src/**/*.{js,vue}": [
-      "eslint --fix"
+      "eslint --fix",
+      "prettier --write"
     ]
   },
   "browserslist": [

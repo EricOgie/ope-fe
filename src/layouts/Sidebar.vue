@@ -1,12 +1,10 @@
 <template>
-    <div>
-        <ul>
-            
-        </ul>
-    </div>
+  <div>
+    <ul></ul>
+  </div>
 </template>
 <script>
 export default {
-    name: 'SideBar'
-}
+  name: "SideBar",
+};
 </script>
