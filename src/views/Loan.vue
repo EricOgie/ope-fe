@@ -6,8 +6,8 @@
       </button>
     </div>
     <div class="stocks_list clear-right">
-      <p class="p-2 font-bold">Portfolio Activities:</p>
-      <StockCard v-for="index in 4" :key="index" :index="index" />
+      <p class="p-2 font-bold">Transactions:</p>
+      <LoanCard v-for="index in 4" :key="index" :index="index" />
     </div>
 
     <LoanFormModal @toggleModal="toggleModal" v-if="isRequest" />
@@ -15,7 +15,7 @@
 </template>
 <script>
 import { ref } from "vue";
-import StockCard from "@/components/reusables_/StockCard.vue";
+import LoanCard from "@/components/reusables_/LoanCard.vue";
 import LoanFormModal from "@/components/reusables_/LoanFormModal.vue";
 
 export default {
@@ -31,7 +31,7 @@ export default {
     };
   },
   components: {
-    StockCard,
+    LoanCard,
     LoanFormModal,
   },
 };

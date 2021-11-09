@@ -13,18 +13,19 @@
         <p class="font-bold text-2xl">Log In to Your Account</p>
       </div>
       <div class="my-4">
-        <form>
+        <form @submit.prevent="submit">
           <div class="input_box">
             <label class="input_label">Your Phone or Email</label>
             <input
-              :class="{ invalid_input: v$.email.$errors.length }"
+              :class="{ invalid_input: v$.user.email.$errors.length }"
               class="form_input"
-              v-model="email"
-              @blur="v$.email.$touch"
+              v-model="user.email"
+              @blur="v$.user.email.$touch"
               type="email"
               name="email"
+              required
             />
-            <div class="error_box" v-if="v$.email.$errors.length">
+            <div class="error_box" v-if="v$.user.email.$errors.length">
               <span class="items-center flex flex-shrink-0 text-red-500">
                 <svg class="mr-2" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                   <path
@@ -40,13 +41,14 @@
           <div class="input_box">
             <label class="input_label">Your Password</label>
             <input
-              :class="{ invalid_input: v$.password.$errors.length }"
+              :class="{ invalid_input: v$.user.password.$errors.length }"
               class="form_input"
               type="password"
-              v-model="password"
-              @blur="v$.password.$touch"
+              v-model="user.password"
+              @blur="v$.user.password.$touch"
+              required
             />
-            <div class="error_box" v-if="v$.password.$errors.length">
+            <div class="error_box" v-if="v$.user.password.$errors.length">
               <span class="items-center flex flex-shrink-0 text-red-500">
                 <svg class="mr-2" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                   <path
@@ -59,7 +61,7 @@
               </span>
             </div>
           </div>
-          <div
+          <button
             class="
               button_box
               bg-black
@@ -69,6 +71,7 @@
               hover:pr-4
               cursor-pointer
               rounded
+              w-full
               flex flex-row
               justify-between
               items-center
@@ -92,7 +95,7 @@
                 stroke-linejoin="round"
               />
             </svg>
-          </div>
+          </button>
           <hr class="my-4" />
           <p>
             New on loaner?
@@ -110,6 +113,9 @@
 <script>
 import useVuelidate from "@vuelidate/core";
 import { required, email, minLength } from "@vuelidate/validators";
+import { mapActions } from "vuex";
+import axios from "axios";
+import User from "../models/user";
 
 export default {
   name: "SignIn",
@@ -118,19 +124,38 @@ export default {
   },
   data() {
     return {
-      email: "",
-      password: "",
+      user: new User("", ""),
     };
+  },
+  methods: {
+    ...mapActions({
+      login: "auth/login",
+    }),
+    async submit() {
+      // eslint-disable-next-line no-underscore-dangle
+      //  const _this = this;
+      const result = await this.v$.$validate();
+      console.log(this.v$);
+      console.log(result);
+      if (!result) {
+        // notify user form is invalid
+        return;
+      }
+      this.login(this.user);
+      axios.post("https://opebe.herokuapp.com/login", this.user).then((res) => console.log(res));
+    },
   },
   validations() {
     return {
-      email: {
-        required,
-        email,
-      },
-      password: {
-        required,
-        min: minLength(8),
+      user: {
+        email: {
+          required,
+          email,
+        },
+        password: {
+          required,
+          min: minLength(8),
+        },
       },
     };
   },

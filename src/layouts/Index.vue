@@ -5,6 +5,9 @@
       <div class="inline-block">
         <GoBack />
       </div>
+      <div>
+        <p class="font-medium text-2xl">{{ $route.name }}</p>
+      </div>
       <router-view />
     </div>
   </div>

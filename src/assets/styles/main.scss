@@ -13,6 +13,13 @@ body {
   text-align: left;
   background-color: #fff;
 }
+#nprogress .bar {
+  background: #0c1825 !important;
+  }
+  #nprogress .spinner .spinner-icon {
+    border-top-color: #0c1825;
+    border-left-color: #0c1825;
+  }
 .form_page {
   min-height: 100vh;
   display: flex;

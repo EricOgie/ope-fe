@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import Nprogress from "nprogress";
 import Home from "../views/Home.vue";
 import Login from "../views/SignIn.vue";
 import CreateAccount from "@/views/CreateAccount.vue";
@@ -48,10 +49,16 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
 ];
-
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
 
+router.beforeEach((_routeTo, _routeFrom, next) => {
+  Nprogress.start();
+  next();
+});
+router.afterEach(() => {
+  Nprogress.done();
+});
 export default router;
