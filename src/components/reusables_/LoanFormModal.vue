@@ -94,18 +94,7 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background-color: rgba(12, 24, 37, 0.54);
-  align-items: center;
-}
+<style lang="scss">
 .modal {
   max-width: 600px;
   width: 90%;

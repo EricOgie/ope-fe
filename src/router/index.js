@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Nprogress from "nprogress";
+import Verify from "@/views/Verify.vue";
 import Home from "../views/Home.vue";
 import Login from "../views/SignIn.vue";
 import CreateAccount from "@/views/CreateAccount.vue";
@@ -12,11 +13,6 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
-  },
-  {
-    path: "/login",
-    name: "Login",
-    component: Login,
   },
   {
     path: "/dashboard",
@@ -36,10 +32,23 @@ const routes = [
     ],
   },
   {
+    path: "/login",
+    name: "Login",
+    component: Login,
+    children: [
+      {
+        path: "verify",
+        name: "Verify",
+        component: Verify,
+      },
+    ],
+  },
+  {
     path: "/createaccount",
     name: "CreateAccount",
     component: CreateAccount,
   },
+
   {
     path: "/about",
     name: "About",

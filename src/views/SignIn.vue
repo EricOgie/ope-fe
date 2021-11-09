@@ -107,7 +107,9 @@
       </div>
     </div>
 
-    <div></div>
+    <div>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 <script>
@@ -135,14 +137,13 @@ export default {
       // eslint-disable-next-line no-underscore-dangle
       //  const _this = this;
       const result = await this.v$.$validate();
-      console.log(this.v$);
-      console.log(result);
+
       if (!result) {
         // notify user form is invalid
         return;
       }
       this.login(this.user);
-      axios.post("https://opebe.herokuapp.com/login", this.user).then((res) => console.log(res));
+      axios.post("https://opebe.herokuapp.com/login", this.user);
     },
   },
   validations() {
