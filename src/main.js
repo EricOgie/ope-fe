@@ -7,4 +7,6 @@ import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
 
+require("@/store/subscriber");
+
 createApp(App).mixin(formatCurrency).use(VueClickAway).use(store).use(router).mount("#app");

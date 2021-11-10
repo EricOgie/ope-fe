@@ -116,7 +116,7 @@
 import useVuelidate from "@vuelidate/core";
 import { required, email, minLength } from "@vuelidate/validators";
 import { mapActions } from "vuex";
-import axios from "axios";
+// import axios from "axios";
 import User from "../models/user";
 
 export default {
@@ -142,8 +142,9 @@ export default {
         // notify user form is invalid
         return;
       }
-      this.login(this.user);
-      axios.post("https://be-ope.herokuapp.com/login", this.user);
+      this.login(this.user).then(() => {
+        this.$router.push({ name: "Verify" });
+      });
     },
   },
   validations() {
@@ -155,7 +156,7 @@ export default {
         },
         password: {
           required,
-          min: minLength(8),
+          min: minLength(6),
         },
       },
     };

@@ -13,7 +13,7 @@
         <p class="font-bold text-2xl">Create Your Account</p>
       </div>
       <div class="my-4">
-        <form>
+        <form @submit.prevent="submit()">
           <div class="grid gap-4 grid-cols-2">
             <div class="input_box">
               <label class="input_label">firstname</label>
@@ -150,7 +150,7 @@
               </span>
             </div>
           </div>
-          <div
+          <button
             class="
               button_box
               bg-black
@@ -160,11 +160,13 @@
               hover:pr-4
               cursor-pointer
               rounded
+              w-full
               flex flex-row
               justify-between
               items-center
               input_box
             "
+            type="submit"
           >
             <p class="text-white text-lg font-medium">Create Account</p>
             <svg
@@ -183,7 +185,7 @@
                 stroke-linejoin="round"
               />
             </svg>
-          </div>
+          </button>
           <hr class="my-4" />
           <p>
             Already Have Account?
@@ -195,13 +197,17 @@
       </div>
     </div>
 
-    <div></div>
+    <div>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 <script>
 import useVuelidate from "@vuelidate/core";
 import { required, email, minLength, numeric, maxLength } from "@vuelidate/validators";
-import validName from "@/utils";
+import { mapActions } from "vuex";
+import { validName } from "@/utils";
+import User from "../models/user";
 
 export default {
   name: "CreateAccount",
@@ -210,15 +216,26 @@ export default {
   },
   data() {
     return {
-      form: {
-        firstname: "",
-        lastname: "",
-        phone: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-      },
+      form: new User("", "", "", "", ""),
     };
+  },
+  methods: {
+    ...mapActions({
+      register: "auth/register",
+    }),
+    async submit() {
+      // eslint-disable-next-line no-underscore-dangle
+      //  const _this = this;
+      const result = await this.v$.$validate();
+      console.log(result);
+      if (!result) {
+        // notify user form is invalid
+        return;
+      }
+      this.register(this.form).then(() => {
+        // this.$router.push({'name': 'Verify'})
+      });
+    },
   },
   validations() {
     return {
@@ -239,8 +256,7 @@ export default {
         },
         phone: { required, numeric, max: maxLength(11) },
         email: { required, email },
-        password: { required, min: minLength(8) },
-        confirmPassword: { required },
+        password: { required, min: minLength(6) },
       },
     };
   },

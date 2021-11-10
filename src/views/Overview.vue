@@ -12,19 +12,34 @@
     </div>
     <div class="stocks_list">
       <p class="p-2 font-bold">Portfolio Activities:</p>
-      <StockCard v-for="index in 4" :key="index" :index="index" />
+      <template v-if="portfolios.length <= 0">
+        <Empty />
+      </template>
+      <template v-else>
+        <StockCard v-for="index in portfolios" :key="index" :index="index" />
+      </template>
     </div>
   </div>
 </template>
 <script>
+import { useStore } from "vuex";
+import { computed } from "vue";
+import Empty from "@/components/reusables_/Empty.vue";
 import StockCard from "@/components/reusables_/StockCard.vue";
 import CardBtn from "@/components/reusables_/CardBtn.vue";
 
 export default {
   name: "Overview",
+  setup() {
+    const store = useStore();
+    return {
+      portfolios: computed(() => store.getters["auth/portfolios"]),
+    };
+  },
   components: {
     StockCard,
     CardBtn,
+    Empty,
   },
 };
 </script>

@@ -8,8 +8,8 @@
         </div>
 
         <div>
-          <form class="flex flex-col justify-center items-center">
-            <div class="flex items-center justify-center my-2">
+          <form @submit.prevent="submit" class="flex flex-col justify-center items-center">
+            <div class="flex items-center flex-wrap justify-center my-2">
               <input type="tel" v-model="first" id="first" maxlength="1" class="border" />
               <input type="tel" v-model="second" id="second" maxlength="1" class="border" />
               <input type="tel" v-model="third" id="third" maxlength="1" class="border" />
@@ -17,7 +17,9 @@
               <input type="tel" v-model="fifth" id="fifth" maxlength="1" class="border" />
               <input type="tel" v-model="sixth" id="sixth" maxlength="1" class="border" />
             </div>
-            <button class="bg-black rounded px-4 py-2 text-white font-medium">Verify</button>
+            <button type="submit" class="bg-black rounded px-4 py-2 text-white font-medium">
+              Verify
+            </button>
           </form>
         </div>
       </div>
@@ -26,10 +28,15 @@
 </template>
 <script>
 import { reactive, toRefs } from "vue";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+import { focusNextInput } from "@/utils";
 
 export default {
   name: "Verify",
   setup() {
+    const store = useStore();
+    const router = useRouter();
     const values = reactive({
       first: "",
       second: "",
@@ -39,12 +46,23 @@ export default {
       sixth: "",
     });
     const { first, second, third, fourth, fifth, sixth } = toRefs(values);
-    const next = (e, to) => {
-      if (e.target.value !== "") {
-        document.getElementById(to).focus();
-      }
+
+    const submit = () => {
+      const otp =
+        values.first + values.second + values.third + values.fourth + values.fifth + values.sixth;
+      store
+        .dispatch("auth/verify", otp)
+        .then(() => {
+          router.push({ path: "/dashboard" });
+        })
+        .catch();
     };
-    return { first, second, third, fourth, fifth, sixth, next };
+    return { first, second, third, fourth, fifth, sixth, submit };
+  },
+  methods: {
+    next(from, to) {
+      focusNextInput(from, to);
+    },
   },
 };
 </script>

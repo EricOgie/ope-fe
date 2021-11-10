@@ -14,7 +14,9 @@ export default {
   register(data) {
     return apiClient.post("/register", data);
   },
-  otp(data) {
-    return apiClient.post("/complete-login", data);
+  otp(otp) {
+    const data = { otp: +otp };
+    console.log(otp);
+    return apiClient.post("/complete-login", data, { headers: authHeader() });
   },
 };

@@ -6,7 +6,9 @@ import Login from "../views/SignIn.vue";
 import CreateAccount from "@/views/CreateAccount.vue";
 import Overview from "@/views/Overview.vue";
 import Loan from "@/views/Loan.vue";
+import EmailVerify from "@/views/VerifyEmail.vue";
 import Dashboard from "@/layouts/Index.vue";
+import store from "@/store";
 
 const routes = [
   {
@@ -18,6 +20,7 @@ const routes = [
     path: "/dashboard",
     name: "Dashboard",
     component: Dashboard,
+    meta: { requiresAuth: true },
     children: [
       {
         path: "",
@@ -47,6 +50,13 @@ const routes = [
     path: "/createaccount",
     name: "CreateAccount",
     component: CreateAccount,
+    children: [
+      {
+        path: "emailverification",
+        name: "EmailVerify",
+        component: EmailVerify,
+      },
+    ],
   },
 
   {
@@ -62,11 +72,19 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
-
-router.beforeEach((_routeTo, _routeFrom, next) => {
+router.beforeEach((to, from, next) => {
   Nprogress.start();
-  next();
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    if (store.getters["auth/isAuthenticated"]) {
+      next();
+      return;
+    }
+    next("/login");
+  } else {
+    next();
+  }
 });
+
 router.afterEach(() => {
   Nprogress.done();
 });
