@@ -1,6 +1,6 @@
 <template>
   <div class="overlay">
-    <div class="modal rounded relative" v-click-away="close">
+    <div class="modal fadeUp rounded relative" v-click-away="close">
       <div @click="close" class="absolute right-0 top-0 m-4">
         <svg
           width="24"

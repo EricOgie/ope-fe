@@ -10,12 +10,12 @@
         <div>
           <form class="flex flex-col justify-center items-center">
             <div class="flex items-center justify-center my-2">
-              <input type="number" v-model="first" id="first" maxlength="1" class="border" />
-              <input type="number" v-model="second" id="second" maxlength="1" class="border" />
-              <input type="number" v-model="third" id="third" maxlength="1" class="border" />
-              <input type="number" v-model="fourth" id="fourth" maxlength="1" class="border" />
-              <input type="number" v-model="fifth" id="fifth" maxlength="1" class="border" />
-              <input type="number" v-model="sixth" id="sixth" maxlength="1" class="border" />
+              <input type="tel" v-model="first" id="first" maxlength="1" class="border" />
+              <input type="tel" v-model="second" id="second" maxlength="1" class="border" />
+              <input type="tel" v-model="third" id="third" maxlength="1" class="border" />
+              <input type="tel" v-model="fourth" id="fourth" maxlength="1" class="border" />
+              <input type="tel" v-model="fifth" id="fifth" maxlength="1" class="border" />
+              <input type="tel" v-model="sixth" id="sixth" maxlength="1" class="border" />
             </div>
             <button class="bg-black rounded px-4 py-2 text-white font-medium">Verify</button>
           </form>

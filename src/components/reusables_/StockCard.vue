@@ -54,16 +54,16 @@ export default {
 #stockcard {
   box-shadow: 0px 0px 10px rgba(12, 24, 37, 0.05);
 
-  animation-name: fadeInOpacity;
+  animation-name: fadeUpOpacity;
   animation-iteration-count: 1;
   animation-timing-function: ease-in;
   animation-duration: 0.35s;
   animation-delay: calc(var(--order) * 200ms);
 }
-@keyframes fadeInOpacity {
+@keyframes fadeUpOpacity {
   20% {
     opacity: 0;
-    transform: translateY(-40%);
+    transform: translateY(100px);
   }
   100% {
     opacity: 1;

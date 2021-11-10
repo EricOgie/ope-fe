@@ -2,11 +2,11 @@
   <div id="main-page" class="mx-auto pt-4">
     <Header />
     <div class="page_container">
-      <div class="inline-block">
+      <div v-show="$route.name != 'Overview'" class="inline-block">
         <GoBack />
       </div>
       <div>
-        <p class="font-medium text-2xl">{{ $route.name }}</p>
+        <p class="font-bold text-2xl">{{ $route.name }}</p>
       </div>
       <router-view />
     </div>
